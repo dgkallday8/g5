@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs'
-import { IUsersData } from '../common/interfaces'
+import { IUserFullData, IUsersData } from '../common/interfaces'
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,9 @@ export class HttpService {
     }
 
     return this._http.get<IUsersData>(`https://api.github.com/search/users`, { params });
+  }
+
+  public getUser(id: string): Observable<IUserFullData> {
+    return this._http.get<IUserFullData>(`https://api.github.com/users/${id}`);
   }
 }

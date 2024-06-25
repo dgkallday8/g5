@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       @for (user of users; track user; let i = $index) {
-        <tr class="table-row" (click)="toUser(user)" [routerLink]="['../user', user.id]">
+        <tr class="table-row" (click)="toUser(user)" [routerLink]="['../user', user.login]">
           <th style="width: 30px;" scope="row">{{ i + 1 }}</th>
           <td style="width: 40px;">
             <img
