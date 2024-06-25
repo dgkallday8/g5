@@ -1,0 +1,11 @@
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li ngbNavItem>
+    <button routerLink="blocks" ngbNavLink>Blocks</button>
+  </li>
+  <li ngbNavItem>
+    <button routerLink="table" ngbNavLink>Table</button>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+
+<router-outlet></router-outlet>
