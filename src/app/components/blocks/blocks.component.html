@@ -3,7 +3,7 @@
 @if (users.length) {
   <div class="users" infiniteScroll (scrolled)="onScroll()">
     @for (user of users; track user) {
-      <div class="user rounded-3" (click)="toUser(user)">
+      <div class="user rounded-3" (click)="toUser(user)" [routerLink]="['../user', user.id]">
         <img [src]="user.avatar_url" class="rounded-3" [alt]="user.login" />
         <span class="ms-4">
           {{ user.login }}

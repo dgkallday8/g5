@@ -9,14 +9,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component'
 import { HttpClientModule } from '@angular/common/http'
-import { InfiniteScrollModule } from 'ngx-infinite-scroll'
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { UserComponent } from './components/user/user.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     BlocksComponent,
-    SearchComponent
+    SearchComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
