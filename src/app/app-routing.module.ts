@@ -14,7 +14,7 @@ const routes: Routes = [
     component: TableComponent,
   },
   {
-    path: 'user/:login',
+    path: 'details/:login',
     component: UserComponent,
   },
   {

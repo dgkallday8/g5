@@ -10,7 +10,7 @@ import { IUserFullData } from '../../common/interfaces'
   styleUrl: './user.component.scss'
 })
 export class UserComponent implements OnInit {
-  public userLogin!: string  
+  public userLogin: string | null = null  
 
   public user$: Observable<IUserFullData> | null = null;
 
@@ -19,6 +19,9 @@ export class UserComponent implements OnInit {
   public ngOnInit(): void {
     this.userLogin = this._route.snapshot.params['login'];
 
-    this.user$ = this._httpService.getUser(this.userLogin)
+    if (this.userLogin) {
+      this.user$ = this._httpService.getUser(this.userLogin)
+    }
+
   }
 }
