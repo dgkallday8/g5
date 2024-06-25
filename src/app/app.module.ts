@@ -10,7 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component'
 import { HttpClientModule } from '@angular/common/http'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { UserComponent } from './components/user/user.component'
+import { UserComponent } from './components/user/user.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getDatabase, provideDatabase } from '@angular/fire/database'
+import { environment } from '../environments/environment.development'
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { UserComponent } from './components/user/user.component'
     NgbModule,
     InfiniteScrollModule,
   ],
-  providers: [],
+  providers: [
+    provideFirebaseApp(() => initializeApp(environment)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
