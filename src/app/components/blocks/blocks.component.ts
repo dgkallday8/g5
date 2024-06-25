@@ -12,16 +12,18 @@ export class BlocksComponent {
   @ViewChild(SearchComponent)
   public searchComponent!: SearchComponent;
 
-  constructor(private _httpService: HttpService) {}
-
   public users: IUserData[] = []
+
+  public showToast = false;
+
+  constructor(private _httpService: HttpService) {}
 
   public onUsersEmit(gotUsers: IUserData[] | null) {
     if (gotUsers) {
       this.users = this.users.concat(gotUsers)
 
       if (!gotUsers.length && !this.users.length) {
-        alert('Users not found')
+        this.showToast = true
       }
     } else {
       this.users = []
