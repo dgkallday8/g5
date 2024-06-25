@@ -1,3 +1,14 @@
-<app-search></app-search>
+<app-search (usersEmitter)="onUsersEmit($event)"></app-search>
 
-<p>blocks works!</p>
+@if (users.length) {
+  <div class="users" infiniteScroll (scrolled)="onScroll()" [infiniteScrollDistance]="2" [fromRoot]="true">
+    @for (user of users; track user) {
+      <div class="user rounded-3" (click)="toUser(user)">
+        <img [src]="user.avatar_url" class="rounded-3" [alt]="user.login" />
+        <span class="ms-4">
+          {{ user.login }}
+        </span>
+      </div>
+    }
+  </div>
+}

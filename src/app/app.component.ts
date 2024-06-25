@@ -7,5 +7,5 @@ import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap'
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-
+  public links = ['blocks', 'table']
 }

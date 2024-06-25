@@ -14,9 +14,6 @@ export class SearchComponent {
 
   constructor(private _httpService: HttpService, private _fb: FormBuilder) {}
 
-  public ngOnInit(): void {
-  }
-
   public onSubmit(resetPage = false) {
     if (!this.valueControl.value) return;
 

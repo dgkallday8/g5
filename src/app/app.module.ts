@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component'
 import { HttpClientModule } from '@angular/common/http'
+import { InfiniteScrollModule } from 'ngx-infinite-scroll'
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http'
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
