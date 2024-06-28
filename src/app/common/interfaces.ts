@@ -43,7 +43,12 @@ export interface IUserFullData extends Omit<IUserData, 'score'> {
   updated_at: string;
 }
 
+export interface IUserCredentials {
+  email: string;
+  password: string;
+}
+
 export enum UserType {
-User = 'User',
-Organization = 'Organization',
+  User = 'User',
+  Organization = 'Organization',
 }
