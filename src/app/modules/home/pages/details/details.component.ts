@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IUserFullData } from '../../../../common/interfaces'
 import { ActivatedRoute } from '@angular/router'
-import { HttpService } from '../../../../services/http.service'
 import { Observable } from 'rxjs'
+import { HttpService } from '../../../../core/services/http.service'
 
 @Component({
   selector: 'app-details',

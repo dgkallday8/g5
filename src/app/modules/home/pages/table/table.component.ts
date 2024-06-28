@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { HttpService } from '../../../../services/http.service'
 import { SearchComponent } from '../../components/search/search.component'
 import { IUserData } from '../../../../common/interfaces'
+import { HttpService } from '../../../../core/services/http.service'
 
 @Component({
   selector: 'app-table',
