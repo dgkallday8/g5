@@ -25,8 +25,20 @@ export class SignInComponent {
       password: this.credintialsForm.value.password,
     }
 
-    await this._authService.loginWithEmailAndPassword(credentials)
+    const res = await this._authService.loginWithEmailAndPassword(credentials)
+
+    console.log('res 2', res);
 
     this._router.navigateByUrl('/home');
+  }
+
+  public async signUpWithGoogle(): Promise<void> {
+    try {
+      const result = await this._authService.signInWithGoogleProvider();
+      this._router.navigateByUrl('/home');
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

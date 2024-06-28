@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, UserCredential, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth'
+import { Auth, AuthProvider, GoogleAuthProvider, UserCredential, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth'
 import { IUserCredentials } from '../../common/interfaces'
 
 @Injectable({
@@ -10,7 +10,7 @@ export class AuthService {
 
   readonly authState$ = authState(this.auth);
 
-  signUpWithEmailAndPassword(credential: IUserCredentials): Promise<UserCredential> {
+  public signUpWithEmailAndPassword(credential: IUserCredentials): Promise<UserCredential> {
     return createUserWithEmailAndPassword(
       this.auth,
       credential.email,
@@ -18,7 +18,7 @@ export class AuthService {
     );
   }
 
-  loginWithEmailAndPassword(credential: IUserCredentials) {
+  public loginWithEmailAndPassword(credential: IUserCredentials) {
     return signInWithEmailAndPassword(
       this.auth,
       credential.email,
@@ -26,7 +26,23 @@ export class AuthService {
     );
   }
 
-  logOut(): Promise<void> {
+  public logOut(): Promise<void> {
     return this.auth.signOut();
+  }
+
+  signInWithGoogleProvider(): Promise<UserCredential> {
+    const provider = new GoogleAuthProvider();
+
+    return this.callPopUp(provider);
+  }
+
+  async callPopUp(provider: AuthProvider): Promise<UserCredential> {
+    try {
+      const result = await signInWithPopup(this.auth, provider);
+
+      return result;
+    } catch (error: any) {
+      return error;
+    }
   }
 }
