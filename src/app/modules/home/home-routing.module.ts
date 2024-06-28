@@ -21,7 +21,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'details',
+    path: 'details/:login',
     component: DetailsComponent,
   },
   {

@@ -1,1 +1,19 @@
-<p>details works!</p>
+@if (user$ | async; as user) {
+  <div class="card mb-3 mt-3">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <img [src]="user.avatar_url" class="img-fluid rounded-start" [alt]="user.login">
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.login }}</h5>
+          <p class="card-text">Company: {{ user.company }}</p>
+          <p class="card-text">User type: <small class="text-body-secondary">{{ user.type }}</small></p>
+          <p class="card-text"><a [href]="user.html_url" target="_blank">Github</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <pre>{{ user | json }}</pre> -->
+}

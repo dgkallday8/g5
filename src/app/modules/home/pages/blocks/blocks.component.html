@@ -1,1 +1,25 @@
-<p>blocks works!</p>
+<app-search (usersEmitter)="onUsersEmit($event)"></app-search>
+
+@if (users.length) {
+  <div class="users" infiniteScroll (scrolled)="onScroll()">
+    @for (user of users; track user) {
+      <div class="user rounded-3" (click)="toUser(user)" [routerLink]="['../details', user.login]">
+        <img [src]="user.avatar_url" class="rounded-3" [alt]="user.login" />
+        <span class="ms-4">
+          {{ user.login }}
+        </span>
+      </div>
+    }
+  </div>
+}
+
+<!-- @if (showToast) {
+  <ngb-toast 
+    (hidden)="showToast = false" 
+    [autohide]="true" 
+    [delay]="5000"
+    class="toast-container position-fixed bottom-0 end-50 p-1 btn btn-danger"
+  >
+    Users not found
+  </ngb-toast>
+} -->

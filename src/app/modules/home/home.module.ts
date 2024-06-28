@@ -6,6 +6,10 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlocksComponent } from './pages/blocks/blocks.component';
 import { TableComponent } from './pages/table/table.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { SearchComponent } from './components/search/search.component'
+import { RouterModule } from '@angular/router'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { InfiniteScrollModule } from 'ngx-infinite-scroll'
 
 
 @NgModule({
@@ -13,11 +17,16 @@ import { DetailsComponent } from './pages/details/details.component';
     HomePageComponent,
     BlocksComponent,
     TableComponent,
-    DetailsComponent
+    DetailsComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InfiniteScrollModule,
   ]
 })
 export class HomeModule { }
