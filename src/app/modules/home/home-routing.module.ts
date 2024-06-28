@@ -8,6 +8,11 @@ import { DetailsComponent } from './pages/details/details.component'
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'blocks',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     component: HomePageComponent,
     children: [
       {
