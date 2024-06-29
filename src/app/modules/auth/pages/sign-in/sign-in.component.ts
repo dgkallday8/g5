@@ -41,4 +41,14 @@ export class SignInComponent {
       console.log(error);
     }
   }
+
+  public async signUpWithGithub(): Promise<void> {
+    try {
+      const result = await this._authService.signInWithGithubProvider();
+      this._router.navigateByUrl('/home');
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

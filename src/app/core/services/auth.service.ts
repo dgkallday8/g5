@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, AuthProvider, GoogleAuthProvider, UserCredential, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth'
+import { Auth, AuthProvider, GithubAuthProvider, GoogleAuthProvider, UserCredential, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth'
 import { IUserCredentials } from '../../common/interfaces'
 
 @Injectable({
@@ -32,6 +32,12 @@ export class AuthService {
 
   signInWithGoogleProvider(): Promise<UserCredential> {
     const provider = new GoogleAuthProvider();
+
+    return this.callPopUp(provider);
+  }
+
+  signInWithGithubProvider(): Promise<UserCredential> {
+    const provider = new GithubAuthProvider();
 
     return this.callPopUp(provider);
   }
