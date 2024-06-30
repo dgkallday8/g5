@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms'
-import { HttpService } from '../../services/http.service'
+import { HttpService } from '../../../../core/services/http.service'
 
 @Component({
   selector: 'app-search',

@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body bg-body-secondary">
+
+          
+          <form [formGroup]="credintialsForm" (ngSubmit)="login()">
+            <div>
+              <label>email</label><br>
+              <input formControlName="email" />
+            </div>
+          
+            <div>
+              <label>password</label><br>
+              <input formControlName="password" />
+            </div>
+            <button type="submit">SIGN IN</button>
+          </form>
+
+
+          <div class="container mt-4">
+            <app-sign-in-with-providers (providerType)="loginWith($event)"></app-sign-in-with-providers>
+          </div>
+
+          <div class="container">
+            <button class="btn btn-outline-secondary" [routerLink]="['../sign-up']">SignUp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
-import { SearchComponent } from '../search/search.component'
-import { HttpService } from '../../services/http.service'
-import { IUserData } from '../../common/interfaces'
+import { SearchComponent } from '../../components/search/search.component'
+import { IUserData } from '../../../../common/interfaces'
+import { HttpService } from '../../../../core/services/http.service'
 
 @Component({
-  selector: 'app-blocks',
-  templateUrl: './blocks.component.html',
-  styleUrl: './blocks.component.scss'
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrl: './table.component.scss'
 })
-export class BlocksComponent {
+export class TableComponent {
   @ViewChild(SearchComponent)
   public searchComponent!: SearchComponent;
 

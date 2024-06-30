@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs'
-import { IUserFullData, IUsersData } from '../common/interfaces'
+import { IUserFullData, IUsersData } from '../../common/interfaces'
 
 @Injectable({
   providedIn: 'root'

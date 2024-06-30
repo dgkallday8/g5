@@ -43,7 +43,27 @@ export interface IUserFullData extends Omit<IUserData, 'score'> {
   updated_at: string;
 }
 
+export interface IUserCredentials {
+  email: string;
+  password: string;
+}
+
 export enum UserType {
-User = 'User',
-Organization = 'Organization',
+  User = 'User',
+  Organization = 'Organization',
+}
+
+export interface IToast {
+  text: string
+  options: IToastOptions;
+}
+
+export interface IToastOptions {
+  classname: string;
+  delay: number;
+}
+
+export enum ProviderValue {
+  Google = 'google',
+  Github = 'github'
 }

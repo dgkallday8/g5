@@ -1,5 +1,5 @@
 <div class="d-flex m-2">
-  <input class="form-control" type="text" placeholder="search" [formControl]="valueControl"> 
+  <input class="form-control" type="text" placeholder="search" [formControl]="valueControl" (keydown.enter)="onSubmit()"> 
   <button 
     type="button" 
     class="btn btn-primary ms-2" 

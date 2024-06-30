@@ -1,15 +1,15 @@
-import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { IUserFullData } from '../../../../common/interfaces'
 import { ActivatedRoute } from '@angular/router'
-import { HttpService } from '../../services/http.service'
-import { IUserFullData } from '../../common/interfaces'
+import { Observable } from 'rxjs'
+import { HttpService } from '../../../../core/services/http.service'
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.scss'
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrl: './details.component.scss'
 })
-export class UserComponent implements OnInit {
+export class DetailsComponent {
   public userLogin: string | null = null  
 
   public user$: Observable<IUserFullData> | null = null;

@@ -1,25 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlocksComponent } from './components/blocks/blocks.component'
-import { TableComponent } from './components/table/table.component'
-import { UserComponent } from './components/user/user.component'
+import { authGuard, publicGuard } from './core/guards/auth.guard'
 
 const routes: Routes = [
   {
-    path: 'blocks',
-    component: BlocksComponent,
+    path: 'home',
+    canActivate: [authGuard],
+    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'table',
-    component: TableComponent,
-  },
-  {
-    path: 'details/:login',
-    component: UserComponent,
+    path: 'auth',
+    canActivate: [publicGuard],
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '**',
-    redirectTo: 'blocks',
+    redirectTo: 'auth',
   },
 ];
 
