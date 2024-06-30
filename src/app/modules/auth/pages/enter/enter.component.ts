@@ -92,4 +92,8 @@ export class EnterComponent implements OnInit {
       this.signWithGoogle()
     }
   } 
+
+  public splitStrByDash(str: string) {
+    return str.split('-').join(' ')
+  }
 }

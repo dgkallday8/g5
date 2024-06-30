@@ -1,26 +1,30 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-12">
-      <div class="card">
-        <div class="card-body bg-body-secondary">
-          <form class="d-flex justify-content-center" [formGroup]="credintialsForm" (ngSubmit)="login()">
-              <div class="ms-2">
+      <div class="card" style="min-height: 350px;">
+        <div class="card-body bg-body-secondary position-relative">
+          <form class="d-flex flex-column justify-content-center align-items-center" [formGroup]="credintialsForm" (ngSubmit)="login()">
+            <div class="d-flex justify-content-between mb-3 w-50">
+              <div class="me-3 w-100">
                 <label class="form-label">Email</label><br>
                 <input class="form-control" formControlName="email" />
               </div>
-              <div class="ms-2">
+              <div class="ms-3 w-100">
                 <label class="form-label">Password</label><br>
                 <input class="form-control" formControlName="password" />
               </div>
-            <button  class="btn btn-outline-primary" type="submit">{{ activePath }}</button>
+            </div>
+            <button class="btn btn-outline-primary mt-3" type="submit">
+              <b>{{ splitStrByDash(activePath) | titlecase }}</b>
+            </button>
           </form>
           @if (isSignInPage) {
             <div class="container mt-5">
               <app-sign-in-with-providers (providerType)="loginWith($event)"></app-sign-in-with-providers>
             </div>
           }
-          <div class="container">
-            <button class="btn btn-outline-secondary" [routerLink]="['../', routerLinkPath]">{{ routerLinkPath | titlecase}}</button>
+          <div class="container position-absolute bottom-0 end-0">
+            <button class="btn btn-outline-secondary mb-2" [routerLink]="['../', routerLinkPath]">Go to {{ routerLinkPath | titlecase}}</button>
           </div>
         </div>
       </div>
