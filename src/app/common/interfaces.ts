@@ -62,3 +62,8 @@ export interface IToastOptions {
   classname: string;
   delay: number;
 }
+
+export enum ProviderValue {
+  Google = 'google',
+  Github = 'github'
+}

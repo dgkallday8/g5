@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from '../../../../core/services/auth.service'
 import { Router } from '@angular/router'
-import { IUserCredentials } from '../../../../common/interfaces'
+import { IUserCredentials, ProviderValue } from '../../../../common/interfaces'
 import { ToastService } from '../../../../core/services/toast.service'
 
 @Component({
@@ -38,7 +38,7 @@ export class SignInComponent {
     }
   }
 
-  public async signUpWithGoogle(): Promise<void> {
+  public async signWithGoogle(): Promise<void> {
     try {
       await this._authService.signInWithGoogleProvider();
       this.successfullLogin();
@@ -47,7 +47,7 @@ export class SignInComponent {
     }
   }
 
-  public async signUpWithGithub(): Promise<void> {
+  public async signWithGithub(): Promise<void> {
     try {
       await this._authService.signInWithGithubProvider();
       this.successfullLogin();
@@ -60,4 +60,12 @@ export class SignInComponent {
     this._toastService.success('Successfully signed in!');
     this._router.navigateByUrl('/home');
   }
+
+  public loginWith(type: ProviderValue) {
+    if (type === ProviderValue.Github) {
+      this.signWithGithub()
+    } else {
+      this.signWithGoogle()
+    }
+  } 
 }
