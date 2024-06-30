@@ -1,3 +1,9 @@
 .active {
   text-decoration: underline !important;
 }
+
+app-toast {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

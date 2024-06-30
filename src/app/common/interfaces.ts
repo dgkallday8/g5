@@ -52,3 +52,13 @@ export enum UserType {
   User = 'User',
   Organization = 'Organization',
 }
+
+export interface IToast {
+  text: string
+  options: IToastOptions;
+}
+
+export interface IToastOptions {
+  classname: string;
+  delay: number;
+}

@@ -10,11 +10,13 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database'
 import { environment } from '../environments/environment.development'
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { ToastComponent } from './common/components/toast/toast.component'
 
 @NgModule({
   declarations: [
     AppComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
