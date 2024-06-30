@@ -10,6 +10,7 @@ import { SearchComponent } from './components/search/search.component'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll'
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap'
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll'
     FormsModule,
     ReactiveFormsModule,
     InfiniteScrollModule,
+    NgbDropdownModule,
   ]
 })
 export class HomeModule { }

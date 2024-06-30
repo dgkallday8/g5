@@ -6,7 +6,7 @@ import { IUserCredentials } from '../../common/interfaces'
   providedIn: 'root'
 })
 export class AuthService {
-  constructor( private auth: Auth) { }
+  constructor(private auth: Auth) { }
 
   readonly authState$ = authState(this.auth);
 
