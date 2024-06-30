@@ -1,22 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { AuthService } from '../../../../core/services/auth.service'
 import { Router } from '@angular/router'
-import { IUserCredentials, ProviderValue } from '../../../../common/interfaces'
 import { ToastService } from '../../../../core/services/toast.service'
+import { IUserCredentials, ProviderValue } from '../../../../common/interfaces'
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss'
+  selector: 'app-enter',
+  templateUrl: './enter.component.html',
+  styleUrl: './enter.component.scss'
 })
-export class SignInComponent {
-  constructor (private _fb: FormBuilder, private _authService: AuthService, private _router: Router, private _toastService: ToastService) {}
+export class EnterComponent implements OnInit {
+  public activePath: 'sign-up' | 'sign-in' = 'sign-in'
+
+  constructor (
+    private _fb: FormBuilder, 
+    private _authService: AuthService, 
+    private _router: Router, 
+    private _toastService: ToastService,
+  ) {}
 
   public credintialsForm = this._fb.group({
     email: [null, Validators.required],
     password: [null, Validators.required]
   })
+
+  public ngOnInit(): void {
+    this.activePath = window.location.href.includes('sign-in') ? 'sign-in' : 'sign-up'
+  }
+
+  public get isSignInPage() {
+    return this.activePath === 'sign-in'
+  }
+
+  public get routerLinkPath() {
+    return this.activePath === 'sign-in' ? 'sign-up' : 'sign-in'
+  }
 
   public async login() {
     if (this.credintialsForm.invalid) return;
@@ -31,8 +50,13 @@ export class SignInComponent {
     }
 
     try {
-      await this._authService.loginWithEmailAndPassword(credentials)
-      this.successfullLogin();
+      if (this.isSignInPage) {
+        await this._authService.loginWithEmailAndPassword(credentials)
+        this.successfullLogin();
+      } else {
+        await this._authService.signUpWithEmailAndPassword(credentials);
+        this.successfullLogin('Successfully signed up!');
+      }
     } catch (e) {
       this._toastService.error('Failed to sign in. Please try again.');
     }
@@ -56,8 +80,8 @@ export class SignInComponent {
     }
   }
 
-  public successfullLogin() {
-    this._toastService.success('Successfully signed in!');
+  public successfullLogin(text: string = 'Successfully signed in!') {
+    this._toastService.success(text);
     this._router.navigateByUrl('/home');
   }
 
