@@ -19,11 +19,15 @@ export class SignInComponent {
   })
 
   public async login() {
-    if (!this.credintialsForm.valid) return;
+    if (this.credintialsForm.invalid) return;
+    
+    const { email, password } = this.credintialsForm.value;
 
-    const credentials: any = {
-      email: this.credintialsForm.value.email,
-      password: this.credintialsForm.value.password,
+    if (!email || !password) return;
+
+    const credentials: IUserCredentials = {
+      email,
+      password,
     }
 
     try {
