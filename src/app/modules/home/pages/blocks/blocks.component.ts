@@ -15,8 +15,6 @@ export class BlocksComponent {
 
   public users: IUserData[] = []
 
-  public showToast = false;
-
   constructor(private _httpService: HttpService, private _toastService: ToastService) {}
 
   public onUsersEmit(gotUsers: IUserData[] | null) {
@@ -31,10 +29,6 @@ export class BlocksComponent {
 
       this.users = []
     }
-  }
-
-  public toUser(user: IUserData) {
-    console.log('toUser', user);
   }
 
   public onScroll() {

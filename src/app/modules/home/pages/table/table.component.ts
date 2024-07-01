@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { SearchComponent } from '../../components/search/search.component'
 import { IUserData } from '../../../../common/interfaces'
 import { HttpService } from '../../../../core/services/http.service'
+import { ToastService } from '../../../../core/services/toast.service'
 
 @Component({
   selector: 'app-table',
@@ -14,24 +15,20 @@ export class TableComponent {
 
   public users: IUserData[] = []
 
-  public showToast = false;
-
-  constructor(private _httpService: HttpService) {}
+  constructor(private _httpService: HttpService, private _toastService: ToastService) {}
 
   public onUsersEmit(gotUsers: IUserData[] | null) {
     if (gotUsers) {
       this.users = this.users.concat(gotUsers)
 
-      if (!gotUsers.length && !this.users.length) {
-        this.showToast = true
+      if (!this.users.length) {
+        this._toastService.error('Users not found, change your request!')
       }
     } else {
+  
+
       this.users = []
     }
-  }
-
-  public toUser(user: IUserData) {
-    console.log('toUser', user);
   }
 
   public onScroll() {
