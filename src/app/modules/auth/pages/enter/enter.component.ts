@@ -98,18 +98,18 @@ export class EnterComponent implements OnInit {
   }
 
   public get requiredPasswordError() {
-    return this.credintialsForm.controls.password.hasError('required')
+    return this.credintialsForm.controls.password.hasError('required') && this.credintialsForm.controls.password.touched;
   }
 
   public get lengthPasswordError() {
-    return this.credintialsForm.controls.password.hasError('minlength')
+    return this.credintialsForm.controls.password.hasError('minlength') && this.credintialsForm.controls.password.touched;
   }
 
   public get emailError() {
-    return this.credintialsForm.controls.email.hasError('email')
+    return this.credintialsForm.controls.email.hasError('email') && this.credintialsForm.controls.email.touched;
   }
 
   public get requiredEmailError() {
-    return this.credintialsForm.controls.email.hasError('required')
+    return this.credintialsForm.controls.email.hasError('required') && this.credintialsForm.controls.email.touched;
   }
 }
