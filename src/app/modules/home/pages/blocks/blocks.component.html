@@ -1,7 +1,7 @@
 <app-search (usersEmitter)="onUsersEmit($event)"></app-search>
 
 @if (users.length) {
-  <div class="users" infiniteScroll (scrolled)="onScroll()">
+  <div class="users container" infiniteScroll (scrolled)="onScroll()">
     @for (user of users; track user) {
       <div class="user rounded-3" (click)="toUser(user)" [routerLink]="['../details', user.login]">
         <img [src]="user.avatar_url" class="rounded-3" [alt]="user.login" />

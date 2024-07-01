@@ -22,10 +22,12 @@ export class BlocksComponent {
   public onUsersEmit(gotUsers: IUserData[] | null) {
     if (gotUsers) {
       this.users = this.users.concat(gotUsers)
-    } else {
+
       if (!this.users.length) {
         this._toastService.error('Users not found, change your request!')
       }
+    } else {
+  
 
       this.users = []
     }
