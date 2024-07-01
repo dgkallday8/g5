@@ -1,19 +1,31 @@
 @if (user$ | async; as user) {
+  <div class="container w-75">
   <div class="card mb-3 mt-3">
     <div class="row g-0">
-      <div class="col-md-2">
+      <div class="col-md-2 p-3 d-flex flex-column">
         <img [src]="user.avatar_url" class="img-fluid rounded-start" [alt]="user.login">
+        <button type="button" class="btn btn-outline-secondary mt-1" (click)="goBack()">Go back</button>
       </div>
       <div class="col-md-10">
         <div class="card-body">
-          <h5 class="card-title">{{ user.login }}</h5>
-          <p class="card-text">Company: {{ user.company }}</p>
-          <p class="card-text">User type: <small class="text-body-secondary">{{ user.type }}</small></p>
+          @if (user.name){
+            <h6 class="card-title">Name: {{ user.name }}</h6>
+          }
+          <p class="card-title">Nick: <b>{{ user.login }}</b></p>
+          @if (user.company){
+            <p class="card-text">Company: {{ user.company }}</p>
+          }
+          <p class="card-text">Type: <small class="text-body-secondary">{{ user.type }}</small></p>
           <p class="card-text"><a [href]="user.html_url" target="_blank">Github</a></p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- <pre>{{ user | json }}</pre> -->
+</div>
+} @else {
+  <div class="container d-flex justify-content-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 }
