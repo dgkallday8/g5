@@ -21,8 +21,8 @@ export class EnterComponent implements OnInit {
   ) {}
 
   public credintialsForm = this._fb.group({
-    email: [null, Validators.required],
-    password: [null, Validators.required]
+    email: [null, [Validators.required, Validators.email]],
+    password: [null, [Validators.required, Validators.minLength(6)]]
   })
 
   public ngOnInit(): void {
@@ -95,5 +95,21 @@ export class EnterComponent implements OnInit {
 
   public splitStrByDash(str: string) {
     return str.split('-').join(' ')
+  }
+
+  public get requiredPasswordError() {
+    return this.credintialsForm.controls.password.hasError('required')
+  }
+
+  public get lengthPasswordError() {
+    return this.credintialsForm.controls.password.hasError('minlength')
+  }
+
+  public get emailError() {
+    return this.credintialsForm.controls.email.hasError('email')
+  }
+
+  public get requiredEmailError() {
+    return this.credintialsForm.controls.email.hasError('required')
   }
 }

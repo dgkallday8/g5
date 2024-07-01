@@ -7,14 +7,26 @@
             <div class="d-flex justify-content-between mb-3 w-50">
               <div class="me-3 w-100">
                 <label class="form-label">Email</label><br>
-                <input class="form-control" formControlName="email" />
+                <input class="form-control position-relative" formControlName="email" />
+                @if (emailError) {
+                  <small class="text-danger position-absolute">Email is not valid</small>
+                }
+                @if (requiredEmailError) {
+                  <small class="text-danger position-absolute">Email is required</small>
+                }
               </div>
               <div class="ms-3 w-100">
                 <label class="form-label">Password</label><br>
-                <input class="form-control" formControlName="password" />
+                <input type="password" class="form-control position-relative" formControlName="password" />
+                @if (lengthPasswordError) {
+                  <small class="text-danger position-absolute">Min length 6</small>
+                }
+                @if (requiredPasswordError) {
+                  <small class="text-danger position-absolute">Password is required</small>
+                }
               </div>
             </div>
-            <button class="btn btn-outline-primary mt-3" type="submit">
+            <button class="btn btn-outline-primary mt-3" type="submit" [disabled]="credintialsForm.invalid">
               <b>{{ splitStrByDash(activePath) | titlecase }}</b>
             </button>
           </form>
